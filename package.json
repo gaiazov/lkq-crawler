@@ -9,11 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "latest",
-    "request": "latest",
+    "bluebird": "^3.1.1",
     "cheerio": "latest",
+    "express": "latest",
     "purecss": "^0.6.0",
-    "underscore": "latest"
+    "request": "latest",
+    "underscore": "latest",
+    "urijs": "^1.17.0"
   },
   "devDependencies": {
     "jspm": "^0.16.14"

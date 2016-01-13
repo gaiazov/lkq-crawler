@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true
+  },
+  "files": [
+    "./typings/tsd.d.ts",
+    "./server/references.ts",
+    "./server/model/Scraper.ts",
+    "./server/model/Car.ts",
+    "./server/server.ts",
+    "./www/js/app.ts"
+  ]
+}
