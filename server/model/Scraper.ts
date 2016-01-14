@@ -30,12 +30,13 @@ export class Scraper {
     return url.toString();
   }
 
-  public Scrape():Promise<Car[]> {
+  public scrape():Promise<Car[]> {
     var cars:Car[] = [];
 
     return new Promise<Car[]>((resolve, reject) => {
 
       var url = this.buildUrl();
+      console.log("scraping " + url);
 
       request(url, (error, response, html) => {
         if (error) {
@@ -55,7 +56,9 @@ export class Scraper {
           var dateString = $row.find(".pypvi_date").text();
           var date = new Date(dateString);
           var image = $row.find(".pypvi_image a").attr("href");
-          image = image.substr(0, image.indexOf("?"));
+          if (image && image.indexOf("?") > 0) {
+            image = image.substr(0, image.indexOf("?"));
+          }
 
           var make = $row.find(".pypvi_make").first().contents().filter(function () {
             return this.nodeType == 3;

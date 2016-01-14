@@ -1,22 +1,24 @@
 import * as express from "express";
-import * as underscore from "underscore";
 
-import {Scraper} from "./model/Scraper";
+import {Queue} from "./Queue";
+import {Config} from "./model/Config";
+import {ScrapeRequest} from "./model/ScrapeRequest";
 
 var app = express();
 
+var config = new Config();
+var queue = new Queue(config.RABBITMQ_URL, config.SCRAPE_QUEUE);
+
 app.get('/scrape', (req, res) => {
-
-    var baseUrl = "http://www.lkqpickyourpart.com/DesktopModules/pyp_vehicleInventory/getVehicleInventory.aspx";
-
-    //"?store=207&page=10&filter=&sp=&cl=&carbuyYardCode=1208&pageSize=15";
-    var url = baseUrl + "?store=207&filter=&sp=&cl=&carbuyYardCode=1208&pageSize=100";
-    var scraper = new Scraper(0, 208).Scrape().then(cars => {
-      new Scraper(1, 208).Scrape().then(cars2 => {
-        res.json(cars.concat(cars2));
-      })
-    });
+  var locationId = 208;
+  scrape(locationId);
+  res.send("scraping of location " + locationId + " queued");
 });
+
+function scrape(locationId:number) {
+  console.log("Scraping " + locationId);
+  queue.publish(new ScrapeRequest(0, 208));
+}
 
 /*
  <tr>
