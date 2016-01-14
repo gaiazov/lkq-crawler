@@ -36,7 +36,7 @@ export class Scraper {
     return new Promise<Car[]>((resolve, reject) => {
 
       var url = this.buildUrl();
-      console.log("scraping " + url);
+      //console.log("scraping " + url);
 
       request(url, (error, response, html) => {
         if (error) {

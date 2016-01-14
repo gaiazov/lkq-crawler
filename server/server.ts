@@ -9,15 +9,15 @@ var app = express();
 var config = new Config();
 var queue = new Queue(config.RABBITMQ_URL, config.SCRAPE_QUEUE);
 
-app.get('/scrape', (req, res) => {
-  var locationId = 208;
+app.get('/scrape/:locationId', (req, res) => {
+  var locationId = parseInt(req.params.locationId);
   scrape(locationId);
   res.send("scraping of location " + locationId + " queued");
 });
 
 function scrape(locationId:number) {
   console.log("Scraping " + locationId);
-  queue.publish(new ScrapeRequest(0, 208));
+  queue.publish(new ScrapeRequest(0, locationId));
 }
 
 /*
