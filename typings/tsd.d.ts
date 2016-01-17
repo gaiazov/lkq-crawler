@@ -10,3 +10,4 @@
 /// <reference path="request/request.d.ts" />
 /// <reference path="bluebird/bluebird.d.ts" />
 /// <reference path="urijs/URIjs.d.ts" />
+/// <reference path="mongodb/mongodb.d.ts" />

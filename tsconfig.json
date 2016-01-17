@@ -10,6 +10,7 @@
     "./server/model/Scraper.ts",
     "./server/model/ScrapeRequest.ts",
     "./server/model/Car.ts",
+    "./server/Database.ts",
     "./server/Queue.ts",
     "./server/server.ts",
     "./server/worker.ts",

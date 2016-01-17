@@ -10,13 +10,6 @@ export class Scraper {
   private static BASE_URL = "http://www.lkqpickyourpart.com/DesktopModules/pyp_vehicleInventory/getVehicleInventory.aspx";
 
   constructor(private page:number, private locationId:number) {
-    // store=207
-    // page=10
-    // filter=
-    // p=
-    // cl=
-    // carbuyYardCode=1208
-    // pageSize=15
   }
 
   private buildUrl():string {

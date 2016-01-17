@@ -16,6 +16,7 @@
     "express": "latest",
     "jackrabbit": "^4.0.3",
     "lodash": "^4.0.0",
+    "mongodb": "^2.1.4",
     "purecss": "^0.6.0",
     "request": "latest",
     "underscore": "latest",
